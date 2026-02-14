@@ -3,108 +3,138 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>For My Valentine ❤️</title>
+<title>For Dimpi ❤️</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Poppins:wght@300&display=swap" rel="stylesheet">
 
 <style>
-body {
-  margin: 0;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: url("your-image.png") no-repeat center center/cover;
-  font-family: 'Georgia', serif;
-  overflow: hidden;
+body{
+  margin:0;
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:url("bg.png") center/cover no-repeat;
+  font-family:'Poppins',sans-serif;
+  overflow:hidden;
 }
 
-/* Dark overlay for readability */
-.overlay {
-  background: rgba(255,255,255,0.85);
-  padding: 40px;
-  border-radius: 20px;
-  text-align: center;
-  max-width: 650px;
-  animation: fadeIn 2s ease;
+/* Glass romantic card */
+.card{
+  backdrop-filter: blur(15px);
+  background: rgba(255,255,255,0.15);
+  border-radius: 25px;
+  padding: 50px;
+  width: 80%;
+  max-width: 700px;
+  text-align:center;
+  box-shadow: 0 0 40px rgba(255,0,0,0.3);
+  animation: fade 2s ease;
 }
 
-h1 {
-  color: red;
-  font-size: 38px;
-  margin-bottom: 20px;
+h1{
+  font-family:'Playfair Display',serif;
+  color:#ff1a1a;
+  font-size:48px;
+  text-shadow:0 0 15px rgba(255,0,0,0.7);
 }
 
-#text {
-  color: red;
-  font-size: 20px;
-  line-height: 1.6;
-  min-height: 180px;
+#text{
+  color:#ff1a1a;
+  font-size:20px;
+  min-height:180px;
+  line-height:1.6;
+}
+
+/* Romantic button */
+button{
+  margin-top:20px;
+  padding:12px 28px;
+  border:none;
+  border-radius:30px;
+  background:#ff1a1a;
+  color:white;
+  font-size:18px;
+  cursor:pointer;
+  transition:0.3s;
+  box-shadow:0 0 15px red;
+}
+
+button:hover{
+  transform:scale(1.1);
+  box-shadow:0 0 25px red;
 }
 
 /* Floating hearts */
-.heart {
-  position: absolute;
-  color: red;
-  font-size: 20px;
-  animation: float 6s linear infinite;
+.heart{
+  position:absolute;
+  color:red;
+  animation: float 7s linear infinite;
 }
 
-@keyframes float {
-  0% { transform: translateY(0); opacity: 1; }
-  100% { transform: translateY(-800px); opacity: 0; }
+@keyframes float{
+  0%{transform:translateY(0);opacity:1}
+  100%{transform:translateY(-900px);opacity:0}
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; transform: scale(0.9); }
-  to { opacity: 1; transform: scale(1); }
+@keyframes fade{
+  from{opacity:0; transform:scale(0.8)}
+  to{opacity:1; transform:scale(1)}
 }
 </style>
 </head>
 
 <body>
 
-<div class="overlay">
+<div class="card">
   <h1>Heyy ❤️</h1>
   <div id="text"></div>
+  <button onclick="reveal()">Tap me 💌</button>
 </div>
 
 <script>
-const message = `Heyy sexy lady,
+const msg = `Heyy sexy lady,
 
-I was honestly amazed after seeing your picture yesterday… couldn’t stop thinking about you ❤️
+I was honestly stunned after seeing your picture yesterday…
+couldn't stop thinking about you ❤️
 
-The sad part is we can’t celebrate this day together.
-Otherwise we would be hanging out, roaming here and there,
-maybe going on a cute dinner date and just enjoying every single moment.
+It's sad we can't celebrate today together.
+Otherwise we'd be roaming around,
+maybe going on a cute dinner date
+and just enjoying every single moment.
 
-I would tease you a little, make you laugh,
-and hold your hand like I never want to let go.
+I would tease you, make you laugh,
+hold your hand like I never want to let go.
 
-But someday… we will celebrate it together,
-and it will be even more special 💫
+But someday… we'll celebrate it together 💫`;
 
-WILL YOU BE MY VALENTINE DIMPII? ❤️`;
-
-let i = 0;
-function typeWriter() {
-  if (i < message.length) {
-    document.getElementById("text").innerHTML += message.charAt(i);
-    i++;
-    setTimeout(typeWriter, 35);
-  }
+let i=0;
+function type(){
+ if(i<msg.length){
+   document.getElementById("text").innerHTML += msg.charAt(i);
+   i++;
+   setTimeout(type,35);
+ }
 }
-typeWriter();
+type();
+
+/* Final reveal */
+function reveal(){
+  document.querySelector(".card").innerHTML = `
+    <h1>WILL YOU BE MY VALENTINE DIMPII? ❤️</h1>
+  `;
+}
 
 /* Floating hearts generator */
-setInterval(() => {
-  const heart = document.createElement("div");
-  heart.className = "heart";
-  heart.innerHTML = "❤";
-  heart.style.left = Math.random() * 100 + "vw";
-  heart.style.fontSize = Math.random() * 20 + 15 + "px";
-  document.body.appendChild(heart);
-
-  setTimeout(() => heart.remove(), 6000);
-}, 400);
+setInterval(()=>{
+ let h=document.createElement("div");
+ h.className="heart";
+ h.innerHTML="❤";
+ h.style.left=Math.random()*100+"vw";
+ h.style.fontSize=Math.random()*25+15+"px";
+ document.body.appendChild(h);
+ setTimeout(()=>h.remove(),7000);
+},300);
 </script>
 
 </body>
