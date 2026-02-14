@@ -6,7 +6,7 @@
 
 <title>For Dimpi ❤️</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500&family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500&display=swap" rel="stylesheet">
 
 <style>
 body{
@@ -14,16 +14,15 @@ body{
   height:100vh;
   background:#0b0b0b;
   font-family:Poppins;
-  color:white;
   overflow:hidden;
+  color:white;
 }
 
 /* Floating hearts */
 .heart{
   position:absolute;
   color:#ff3b6b;
-  animation:float 6s linear infinite;
-  font-size:20px;
+  animation:float linear infinite;
 }
 
 @keyframes float{
@@ -31,65 +30,40 @@ body{
   to{transform:translateY(-10vh)}
 }
 
-/* Center box */
+/* Center */
 .center{
   position:absolute;
   top:50%;
   left:50%;
   transform:translate(-50%,-50%);
   text-align:center;
-  width:90%;
-  max-width:500px;
 }
 
-/* Chat bubbles */
-.msg{
-  background:#ff2a5a;
-  padding:14px 20px;
-  border-radius:25px;
-  margin:10px auto;
-  width:fit-content;
-  opacity:0;
-  transform:translateY(20px);
-  animation:appear .6s forwards;
+/* Glow title */
+.title{
+  font-size:42px;
+  color:#ff4d6d;
+  text-shadow:0 0 20px #ff4d6d;
 }
 
-@keyframes appear{
-  to{opacity:1; transform:translateY(0)}
-}
-
-/* Letter */
-.letter{
-  display:none;
-  font-family:"Dancing Script";
-  font-size:26px;
-  line-height:1.6;
-}
-
-/* Proposal */
-.proposal{
-  display:none;
-}
-
+/* Buttons */
 button{
-  padding:12px 25px;
+  padding:14px 30px;
+  margin:15px;
   border:none;
-  border-radius:30px;
+  border-radius:40px;
   font-size:18px;
-  margin:10px;
   cursor:pointer;
   transition:.3s;
 }
 
-.yes{
-  background:#ff2a5a;
-  color:white;
-}
+.yes{ background:#ff4d6d; color:white; }
+.no{ background:#444; color:white; position:relative; }
 
-.no{
-  background:#444;
-  color:white;
-  position:relative;
+/* Countdown */
+.count{
+  font-size:60px;
+  color:#ff4d6d;
 }
 </style>
 </head>
@@ -98,107 +72,100 @@ button{
 
 <!-- Floating hearts -->
 <script>
-for(let i=0;i<25;i++){
+for(let i=0;i<35;i++){
   let h=document.createElement("div");
   h.className="heart";
   h.innerHTML="❤";
   h.style.left=Math.random()*100+"%";
-  h.style.animationDuration=3+Math.random()*5+"s";
+  h.style.animationDuration=3+Math.random()*6+"s";
+  h.style.fontSize=12+Math.random()*18+"px";
   document.body.appendChild(h);
 }
 </script>
 
-<div class="center" id="box"></div>
+<div class="center" id="box">
+
+<div class="count" id="count">3</div>
+
+</div>
 
 <script>
 
-/* CHAT PHASE */
+/* COUNTDOWN */
+let c=3;
+let count=document.getElementById("count");
 
-const messages=[
-"Hey ❤️",
-"I made something for you...",
-"Because you are special to me 💖",
-"My days feel boring without you...",
-"I wish I could be with you today..."
-];
-
-let i=0;
-const box=document.getElementById("box");
-
-function showChat(){
-  if(i<messages.length){
-    let d=document.createElement("div");
-    d.className="msg";
-    d.innerText=messages[i];
-    box.appendChild(d);
-    i++;
-    setTimeout(showChat,1400);
+let interval=setInterval(()=>{
+  c--;
+  if(c==0){
+    clearInterval(interval);
+    showProposal();
+  } else {
+    count.innerText=c;
   }
-  else{
-    setTimeout(showLetter,1200);
-  }
-}
-showChat();
+},1000);
 
 
-/* LETTER PHASE */
-
-function showLetter(){
-  box.innerHTML=`
-  <div class="letter" id="letter">
-  From the day you came into my life,  
-  everything started feeling brighter.  
-  Your smile, your voice, your presence…  
-  they mean more to me than you know ❤️  
-  <br><br>
-  I don't know what the future holds,  
-  but I know I want you in it 💫
-  </div>`;
-  
-  document.getElementById("letter").style.display="block";
-
-  setTimeout(showProposal,6000);
-}
-
-
-/* PROPOSAL PHASE */
-
+/* PROPOSAL */
 function showProposal(){
-  box.innerHTML=`
-  <div class="proposal">
-  <h1 style="color:#ff2a5a">Will You Be Mine? ❤️</h1>
-  <button class="yes" onclick="yesClick()">YES 💖</button>
-  <button class="no" id="no">NO 😢</button>
-  </div>`;
-  
-  document.querySelector(".proposal").style.display="block";
+document.getElementById("box").innerHTML=`
+<h1 class="title">Will You Be Mine? ❤️</h1>
 
-  const noBtn=document.getElementById("no");
+<button class="yes" onclick="yesClick()">YES 💖</button>
+<button class="no" id="no">NO 😢</button>
+`;
 
-  noBtn.onmouseover=function(){
-    noBtn.style.left=Math.random()*200-100+"px";
-    noBtn.style.top=Math.random()*200-100+"px";
-  }
+const noBtn=document.getElementById("no");
+noBtn.onmouseover=function(){
+  noBtn.style.left=Math.random()*200-100+"px";
+  noBtn.style.top=Math.random()*200-100+"px";
+};
 }
 
 
-/* YES CLICK */
-
+/* YES CLICK — LOVE MODE */
 function yesClick(){
-  document.body.innerHTML=`
-  <div style="
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  height:100vh;
-  text-align:center;
-  font-family:Dancing Script;
-  font-size:45px;
-  color:#ff2a5a;">
-  YAYYYYY ❤️<br>
-  You just made me the happiest person 💖
-  </div>`;
+
+document.body.style.background="#ffdde1";
+
+document.body.innerHTML=`
+<div style="
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+flex-direction:column;
+font-size:45px;
+color:#ff2a5a;
+text-align:center;">
+
+❤️ YAYYYYY ❤️
+<br>
+You just made me the happiest person alive 💖
+
+</div>`;
+
+/* CONFETTI */
+for(let i=0;i<120;i++){
+  let conf=document.createElement("div");
+  conf.innerHTML="❤";
+  conf.style.position="absolute";
+  conf.style.left=Math.random()*100+"%";
+  conf.style.top="-20px";
+  conf.style.fontSize="20px";
+  conf.style.animation="fall 3s linear forwards";
+  document.body.appendChild(conf);
 }
+
+}
+
+/* CONFETTI ANIMATION */
+let style=document.createElement("style");
+style.innerHTML=`
+@keyframes fall{
+to{ transform:translateY(110vh); opacity:0; }
+}`;
+document.head.appendChild(style);
 
 </script>
 
