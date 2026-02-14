@@ -1,134 +1,143 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Heyy Dimpyy... 💋</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-<title>For You ❤️</title>
+    body {
+      min-height: 100vh;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.75)),
+                  url('https://images.unsplash.com/photo-1519741497674-9463d2a6d1e0?auto=format&fit=crop&q=80') center/cover no-repeat fixed;
+      /* 
+         Alternative backgrounds (uncomment one if you prefer):
+         https://thumbs.dreamstime.com/b/luxury-dark-red-valentine-background-glowing-hearts-soft-bokeh-lights-perfect-romantic-designs-banners-posters-love-428280831.jpg
+         or https://thumbs.dreamstime.com/b/romantic-scene-glittering-red-hearts-valentine-s-day-design-generative-ai-softly-glow-against-blurred-dark-background-434163619.jpg
+      */
+      color: #fff;
+      overflow-x: hidden;
+    }
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&family=Great+Vibes&display=swap" rel="stylesheet">
+    .container {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 40px 20px;
+      text-align: center;
+    }
 
-<style>
+    h1 {
+      font-size: 3.8rem;
+      color: #ff004c;
+      text-shadow: 0 0 20px rgba(255, 0, 76, 0.7);
+      margin-bottom: 1.5rem;
+      animation: glow 2s ease-in-out infinite alternate;
+    }
 
-body {
-  margin: 0;
-  font-family: 'Poppins', sans-serif;
-  height: 100vh;
-  background: url("background.jpg") center/cover no-repeat;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-}
+    .typewriter {
+      font-size: 1.35rem;
+      line-height: 1.8;
+      max-width: 900px;
+      color: #ff3366;
+      margin: 0 auto 3rem;
+      white-space: pre-wrap;
+      opacity: 0;
+      animation: fadeIn 1.5s forwards 1s;
+    }
 
-/* DARK OVERLAY */
-body::before {
-  content: "";
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.55);
-}
+    .highlight {
+      color: #ff4d4d;
+      font-weight: bold;
+      text-shadow: 0 0 10px #ff4d4d;
+    }
 
-/* MAIN BOX */
-.container {
-  position: relative;
-  text-align: center;
-  color: white;
-  max-width: 700px;
-  padding: 40px;
-  backdrop-filter: blur(10px);
-  background: rgba(0,0,0,0.35);
-  border-radius: 25px;
-  box-shadow: 0 0 40px rgba(255,0,90,0.6);
-}
+    .heart {
+      display: inline-block;
+      font-size: 1.6rem;
+      animation: pulse 1.4s infinite;
+      margin: 0 6px;
+    }
 
-/* TITLE */
-h1 {
-  font-family: 'Great Vibes', cursive;
-  font-size: 70px;
-  margin-bottom: 10px;
-  color: #ff4d79;
-}
+    .ending {
+      font-size: 2.2rem;
+      color: #ff1a1a;
+      margin-top: 2rem;
+      text-shadow: 0 0 25px #ff1a1a;
+      animation: fadeIn 2s forwards 4s;
+    }
 
-/* SUBTEXT */
-p {
-  font-size: 20px;
-  line-height: 1.6;
-  margin-bottom: 30px;
-}
+    @keyframes glow {
+      from { text-shadow: 0 0 10px #ff004c, 0 0 20px #ff004c; }
+      to   { text-shadow: 0 0 20px #ff004c, 0 0 40px #ff004c, 0 0 60px #ff1a75; }
+    }
 
-/* ❤️ "heyy sexy lady, I was just amazed and stunned by yesterday's image, was just wondering further things by looking at you in that pic....u know ??
-The sad thing is that we can't celebrate this day together, nahi toh bahot kuch kar rhe hote. We could hang out together just wandering here n there, or a dinner date, and just enjoy the every  moment if we were together, I would tease u  you a lil on the night of 14th Feb, we could get to feel a bit dirty and romantic moment together, I'd kiss your lips n every sensitive point, slide my fingers in you...we could play some games at night... cuddles, kisses, hugs, whispering sweet things, moanings..... I'd like to hear your moans, just excited to hear your screams....I donno when this day comes but just be ready for that, girl. ❤️ */
-.custom-text {
-  margin-top: 20px;
-  font-size: 18px;
-  line-height: 1.7;
-  min-height: 120px; /* SPACE LEFT FOR YOUR MESSAGE */
-  border-top: 1px solid rgba(255,255,255,0.3);
-  padding-top: 20px;
-}
+    @keyframes pulse {
+      0%   { transform: scale(1); }
+      50%  { transform: scale(1.25); }
+      100% { transform: scale(1); }
+    }
 
-/* BUTTONS */
-.buttons {
-  margin-top: 30px;
-}
+    @keyframes fadeIn {
+      to { opacity: 1; }
+    }
 
-button {
-  padding: 15px 35px;
-  border: none;
-  border-radius: 40px;
-  font-size: 18px;
-  cursor: pointer;
-  margin: 10px;
-  transition: 0.3s;
-}
-
-.yes {
-  background: linear-gradient(45deg,#ff4d79,#ff1a4d);
-  color: white;
-  box-shadow: 0 0 20px #ff4d79;
-}
-
-.no {
-  background: rgba(255,255,255,0.2);
-  color: white;
-}
-
-.yes:hover {
-  transform: scale(1.1);
-}
-
-.no:hover {
-  transform: translateX(10px);
-}
-
-</style>
+    @media (max-width: 768px) {
+      h1 { font-size: 2.8rem; }
+      .typewriter { font-size: 1.15rem; }
+      .ending { font-size: 1.8rem; }
+    }
+  </style>
 </head>
-
 <body>
 
-<div class="container">
+  <div class="container">
+    <h1>Heyy Sexy Lady<span class="heart">💋</span></h1>
 
-<h1>Will You Be Mine? ❤️</h1>
+    <div class="typewriter" id="typed-text"></div>
 
-<p>
-I made this just for you… because you mean more to me than words can say 💌
-</p>
+    <div class="ending">
+      WILL YOU BE MY VALENTINE, DIMPII<span class="heart">❤️</span>?
+    </div>
+  </div>
 
-<
-<div class="custom-text">
-YOUR MESSAGE HERE...
-Write anything you want about her 💖
-Your feelings, memories, promises, anything 🥹
-</div>
+  <script>
+    const message = `I was just amazed and stunned by yesterday's image... was just wondering further things by looking at you in that pic.... u know?? 😏
 
-<div class="buttons">
-<button class="yes" onclick="alert('YAYYYYY ❤️')">YES 💘</button>
-<button class="no" onclick="alert('Try again 😏')">NO 😜</button>
-</div>
+The sad thing is that we can't celebrate this day together, nahi toh bahot kuch kar rhe hote. 
 
-</div>
+We could hang out together just wandering here n there, or a dinner date, and just enjoy every moment if we were together...
+
+I would tease u a lil on the night of 14th Feb, we could get to feel a bit dirty and romantic moment together...
+
+I'd kiss your lips n every sensitive point, slide my fingers in you... we could play some games at night... cuddles, kisses, hugs, whispering sweet things, moanings.....
+
+I'd like to hear your moans, just excited to hear your screams....
+
+I donno when this day comes but just be ready for that, girl.`;
+
+    const typewriterElement = document.getElementById('typed-text');
+    let i = 0;
+
+    function typeWriter() {
+      if (i < message.length) {
+        typewriterElement.innerHTML += message.charAt(i);
+        i++;
+        setTimeout(typeWriter, 35); // typing speed
+      }
+    }
+
+    // Start typing after a small delay
+    setTimeout(typeWriter, 1500);
+  </script>
 
 </body>
 </html>
