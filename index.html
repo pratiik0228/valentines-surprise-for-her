@@ -3,108 +3,203 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>For Dimpi ❤️</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Libre+Baskerville&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500&family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
 
 <style>
 body{
   margin:0;
   height:100vh;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  background: linear-gradient(135deg,#f8e8e8,#fff5f5);
-  font-family:'Libre Baskerville',serif;
+  background:#0b0b0b;
+  font-family:Poppins;
+  color:white;
+  overflow:hidden;
 }
 
-/* Letter container */
-.letter{
-  background:white;
-  padding:60px;
-  width:90%;
-  max-width:750px;
-  border-radius:12px;
-  box-shadow:0 20px 60px rgba(0,0,0,0.2);
-  position:relative;
-}
-
-/* Top line */
-.letter::before{
-  content:"";
+/* Floating hearts */
+.heart{
   position:absolute;
-  top:0;
-  left:0;
-  width:100%;
-  height:6px;
-  background:#b30000;
-  border-radius:12px 12px 0 0;
-}
-
-h1{
-  font-family:'Playfair Display',serif;
-  color:#b30000;
-  font-size:42px;
-  margin-bottom:30px;
-}
-
-#text{
-  font-size:18px;
-  line-height:1.9;
-  color:#333;
-  min-height:220px;
-}
-
-.signature{
-  margin-top:40px;
-  font-style:italic;
-  color:#b30000;
+  color:#ff3b6b;
+  animation:float 6s linear infinite;
   font-size:20px;
-  text-align:right;
+}
+
+@keyframes float{
+  from{transform:translateY(100vh)}
+  to{transform:translateY(-10vh)}
+}
+
+/* Center box */
+.center{
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  text-align:center;
+  width:90%;
+  max-width:500px;
+}
+
+/* Chat bubbles */
+.msg{
+  background:#ff2a5a;
+  padding:14px 20px;
+  border-radius:25px;
+  margin:10px auto;
+  width:fit-content;
+  opacity:0;
+  transform:translateY(20px);
+  animation:appear .6s forwards;
+}
+
+@keyframes appear{
+  to{opacity:1; transform:translateY(0)}
+}
+
+/* Letter */
+.letter{
+  display:none;
+  font-family:"Dancing Script";
+  font-size:26px;
+  line-height:1.6;
+}
+
+/* Proposal */
+.proposal{
+  display:none;
+}
+
+button{
+  padding:12px 25px;
+  border:none;
+  border-radius:30px;
+  font-size:18px;
+  margin:10px;
+  cursor:pointer;
+  transition:.3s;
+}
+
+.yes{
+  background:#ff2a5a;
+  color:white;
+}
+
+.no{
+  background:#444;
+  color:white;
+  position:relative;
 }
 </style>
 </head>
 
 <body>
 
-<div class="letter">
-  <h1>My Dear ❤️</h1>
-  <div id="text"></div>
-  <div class="signature">— Yours ❤️</div>
-</div>
+<!-- Floating hearts -->
+<script>
+for(let i=0;i<25;i++){
+  let h=document.createElement("div");
+  h.className="heart";
+  h.innerHTML="❤";
+  h.style.left=Math.random()*100+"%";
+  h.style.animationDuration=3+Math.random()*5+"s";
+  document.body.appendChild(h);
+}
+</script>
+
+<div class="center" id="box"></div>
 
 <script>
-const message = `Heyy sexy lady,
 
-I was honestly amazed and stunned by yesterday’s picture…
-I couldn’t stop thinking about you ❤️
+/* CHAT PHASE */
 
-The sad part is we can’t celebrate this day together.
-Otherwise we would be hanging out,
-roaming here and there,
-maybe going on a dinner date
-and just enjoying every single moment.
+const messages=[
+"Hey ❤️",
+"I made something for you...",
+"Because you are special to me 💖",
+"My days feel boring without you...",
+"I wish I could be with you today..."
+];
 
-I would tease you a little,
-make you laugh,
-hold your hand,
-and never want to let go.
+let i=0;
+const box=document.getElementById("box");
 
-I don’t know when that day will come,
-but when it does,
-it will be unforgettable 💫
-
-WILL YOU BE MY VALENTINE DIMPII? ❤️`;
-
-let i = 0;
-function typeWriter(){
-  if(i < message.length){
-    document.getElementById("text").innerHTML += message.charAt(i);
+function showChat(){
+  if(i<messages.length){
+    let d=document.createElement("div");
+    d.className="msg";
+    d.innerText=messages[i];
+    box.appendChild(d);
     i++;
-    setTimeout(typeWriter, 35);
+    setTimeout(showChat,1400);
+  }
+  else{
+    setTimeout(showLetter,1200);
   }
 }
-typeWriter();
+showChat();
+
+
+/* LETTER PHASE */
+
+function showLetter(){
+  box.innerHTML=`
+  <div class="letter" id="letter">
+  From the day you came into my life,  
+  everything started feeling brighter.  
+  Your smile, your voice, your presence…  
+  they mean more to me than you know ❤️  
+  <br><br>
+  I don't know what the future holds,  
+  but I know I want you in it 💫
+  </div>`;
+  
+  document.getElementById("letter").style.display="block";
+
+  setTimeout(showProposal,6000);
+}
+
+
+/* PROPOSAL PHASE */
+
+function showProposal(){
+  box.innerHTML=`
+  <div class="proposal">
+  <h1 style="color:#ff2a5a">Will You Be Mine? ❤️</h1>
+  <button class="yes" onclick="yesClick()">YES 💖</button>
+  <button class="no" id="no">NO 😢</button>
+  </div>`;
+  
+  document.querySelector(".proposal").style.display="block";
+
+  const noBtn=document.getElementById("no");
+
+  noBtn.onmouseover=function(){
+    noBtn.style.left=Math.random()*200-100+"px";
+    noBtn.style.top=Math.random()*200-100+"px";
+  }
+}
+
+
+/* YES CLICK */
+
+function yesClick(){
+  document.body.innerHTML=`
+  <div style="
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  height:100vh;
+  text-align:center;
+  font-family:Dancing Script;
+  font-size:45px;
+  color:#ff2a5a;">
+  YAYYYYY ❤️<br>
+  You just made me the happiest person 💖
+  </div>`;
+}
+
 </script>
 
 </body>
