@@ -16,7 +16,25 @@ body{
   color:white;
 }
 
-/* Stars background */
+/* INTRO SCREEN */
+#intro{
+  position:fixed;
+  width:100%;
+  height:100%;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-size:40px;
+  background:black;
+  animation: fadeOut 3s forwards;
+  animation-delay:3s;
+}
+
+@keyframes fadeOut{
+  to{opacity:0;visibility:hidden}
+}
+
+/* Shooting stars background */
 .stars{
   position:fixed;
   width:100%;
@@ -30,50 +48,43 @@ body{
   to{background-position:-10000px 5000px}
 }
 
-/* Envelope */
-.envelope{
+/* Chat messages */
+.chat{
   position:absolute;
-  top:50%;
+  bottom:20px;
   left:50%;
-  transform:translate(-50%,-50%);
-  font-size:120px;
-  cursor:pointer;
-  animation: glow 2s infinite alternate;
+  transform:translateX(-50%);
+  width:90%;
+  max-width:600px;
 }
 
-@keyframes glow{
-  from{text-shadow:0 0 10px pink}
-  to{text-shadow:0 0 40px red}
+.msg{
+  background:rgba(255,0,0,0.7);
+  padding:12px 18px;
+  border-radius:20px;
+  margin:10px 0;
+  opacity:0;
+  animation: appear 1s forwards;
 }
 
-/* Letter card */
-.card{
+@keyframes appear{
+  to{opacity:1}
+}
+
+/* Proposal screen */
+#proposal{
   display:none;
   position:absolute;
   top:50%;
   left:50%;
   transform:translate(-50%,-50%);
-  backdrop-filter: blur(18px);
-  background: rgba(255,255,255,0.1);
-  border-radius: 30px;
-  padding: 50px;
-  width: 85%;
-  max-width: 700px;
   text-align:center;
-  box-shadow: 0 0 60px rgba(255,0,0,0.6);
 }
 
 h1{
   font-family:'Great Vibes',cursive;
-  font-size:65px;
+  font-size:70px;
   color:#ff1a1a;
-}
-
-#text{
-  color:#ff4d4d;
-  font-size:20px;
-  min-height:200px;
-  line-height:1.7;
 }
 
 /* Buttons */
@@ -93,70 +104,63 @@ button{
 .heart{
   position:absolute;
   color:red;
-  animation: float 8s linear infinite;
+  animation: float 7s linear infinite;
 }
 
 @keyframes float{
   0%{transform:translateY(0);opacity:1}
-  100%{transform:translateY(-1000px);opacity:0}
+  100%{transform:translateY(-900px);opacity:0}
 }
 </style>
 </head>
 
 <body>
 
+<div id="intro">Loading your surprise ❤️</div>
 <div class="stars"></div>
 
 <!-- MUSIC -->
-<audio id="music" loop>
+<audio autoplay loop>
   <source src="music.mp3" type="audio/mp3">
 </audio>
 
-<div class="envelope" onclick="openLetter()">💌</div>
+<div class="chat" id="chat"></div>
 
-<div class="card" id="card">
-  <h1>Heyy ❤️</h1>
-  <div id="text"></div>
-  <div id="buttons" style="display:none">
-    <button class="yes" onclick="yes()">YES ❤️</button>
-    <button class="no" id="noBtn">NO 😒</button>
-  </div>
+<div id="proposal">
+  <h1>WILL YOU BE MY VALENTINE DIMPII? ❤️</h1>
+  <button class="yes" onclick="yes()">YES ❤️</button>
+  <button class="no" id="noBtn">NO 😒</button>
 </div>
 
 <script>
-function openLetter(){
-  document.querySelector(".envelope").style.display="none";
-  document.getElementById("card").style.display="block";
-  document.getElementById("music").play();
-  type();
-}
 
-/* Typewriter */
-const msg = `I was honestly stunned after seeing your picture yesterday…
-couldn't stop thinking about you ❤️
+/* Chat messages appearing */
+const messages=[
+ "Heyy ❤️",
+ "I have something special for you...",
+ "You mean a lot to me 💖",
+ "I wish we were together today...",
+ "But someday we will be 💫"
+];
 
-It's sad we can't celebrate today together,
-otherwise we'd be roaming around,
-laughing, teasing, and making memories.
+messages.forEach((m,i)=>{
+ setTimeout(()=>{
+   const div=document.createElement("div");
+   div.className="msg";
+   div.innerText=m;
+   document.getElementById("chat").appendChild(div);
+ },4000 + i*1500);
+});
 
-But someday… we'll celebrate it together 💫
-
-WILL YOU BE MY VALENTINE DIMPII? ❤️`;
-
-let i=0;
-function type(){
- if(i<msg.length){
-   document.getElementById("text").innerHTML += msg.charAt(i);
-   i++;
-   setTimeout(type,35);
- }else{
-   document.getElementById("buttons").style.display="block";
- }
-}
+/* Show proposal */
+setTimeout(()=>{
+ document.getElementById("chat").style.display="none";
+ document.getElementById("proposal").style.display="block";
+},12000);
 
 /* YES explosion */
 function yes(){
- document.body.innerHTML="<h1 style='color:red;font-size:80px;text-align:center;margin-top:40vh;'>SHE SAID YES ❤️‍🔥</h1>";
+ document.body.innerHTML="<h1 style='color:red;font-size:90px;text-align:center;margin-top:40vh;'>SHE SAID YES ❤️‍🔥</h1>";
 }
 
 /* NO runs away */
@@ -175,9 +179,9 @@ setInterval(()=>{
  h.style.left=Math.random()*100+"vw";
  h.style.fontSize=Math.random()*30+15+"px";
  document.body.appendChild(h);
- setTimeout(()=>h.remove(),8000);
+ setTimeout(()=>h.remove(),7000);
 },300);
-</script>
 
+</script>
 </body>
 </html>
