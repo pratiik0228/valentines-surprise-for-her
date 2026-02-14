@@ -4,170 +4,130 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>For Dimpi ❤️</title>
+<title>For You ❤️</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&family=Great+Vibes&display=swap" rel="stylesheet">
 
 <style>
-body{
-  margin:0;
-  height:100vh;
-  background:#0b0b0b;
-  font-family:Poppins;
-  overflow:hidden;
-  color:white;
+
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  height: 100vh;
+  background: url("background.jpg") center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
 }
 
-/* Floating hearts */
-.heart{
-  position:absolute;
-  color:#ff3b6b;
-  animation:float linear infinite;
+/* DARK OVERLAY */
+body::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.55);
 }
 
-@keyframes float{
-  from{transform:translateY(100vh)}
-  to{transform:translateY(-10vh)}
+/* MAIN BOX */
+.container {
+  position: relative;
+  text-align: center;
+  color: white;
+  max-width: 700px;
+  padding: 40px;
+  backdrop-filter: blur(10px);
+  background: rgba(0,0,0,0.35);
+  border-radius: 25px;
+  box-shadow: 0 0 40px rgba(255,0,90,0.6);
 }
 
-/* Center */
-.center{
-  position:absolute;
-  top:50%;
-  left:50%;
-  transform:translate(-50%,-50%);
-  text-align:center;
+/* TITLE */
+h1 {
+  font-family: 'Great Vibes', cursive;
+  font-size: 70px;
+  margin-bottom: 10px;
+  color: #ff4d79;
 }
 
-/* Glow title */
-.title{
-  font-size:42px;
-  color:#ff4d6d;
-  text-shadow:0 0 20px #ff4d6d;
+/* SUBTEXT */
+p {
+  font-size: 20px;
+  line-height: 1.6;
+  margin-bottom: 30px;
 }
 
-/* Buttons */
-button{
-  padding:14px 30px;
-  margin:15px;
-  border:none;
-  border-radius:40px;
-  font-size:18px;
-  cursor:pointer;
-  transition:.3s;
+/* ❤️ SPACE FOR YOUR OWN TEXT ❤️ */
+.custom-text {
+  margin-top: 20px;
+  font-size: 18px;
+  line-height: 1.7;
+  min-height: 120px; /* SPACE LEFT FOR YOUR MESSAGE */
+  border-top: 1px solid rgba(255,255,255,0.3);
+  padding-top: 20px;
 }
 
-.yes{ background:#ff4d6d; color:white; }
-.no{ background:#444; color:white; position:relative; }
-
-/* Countdown */
-.count{
-  font-size:60px;
-  color:#ff4d6d;
+/* BUTTONS */
+.buttons {
+  margin-top: 30px;
 }
+
+button {
+  padding: 15px 35px;
+  border: none;
+  border-radius: 40px;
+  font-size: 18px;
+  cursor: pointer;
+  margin: 10px;
+  transition: 0.3s;
+}
+
+.yes {
+  background: linear-gradient(45deg,#ff4d79,#ff1a4d);
+  color: white;
+  box-shadow: 0 0 20px #ff4d79;
+}
+
+.no {
+  background: rgba(255,255,255,0.2);
+  color: white;
+}
+
+.yes:hover {
+  transform: scale(1.1);
+}
+
+.no:hover {
+  transform: translateX(10px);
+}
+
 </style>
 </head>
 
 <body>
 
-<!-- Floating hearts -->
-<script>
-for(let i=0;i<35;i++){
-  let h=document.createElement("div");
-  h.className="heart";
-  h.innerHTML="❤";
-  h.style.left=Math.random()*100+"%";
-  h.style.animationDuration=3+Math.random()*6+"s";
-  h.style.fontSize=12+Math.random()*18+"px";
-  document.body.appendChild(h);
-}
-</script>
+<div class="container">
 
-<div class="center" id="box">
+<h1>Will You Be Mine? ❤️</h1>
 
-<div class="count" id="count">3</div>
+<p>
+I made this just for you… because you mean more to me than words can say 💌
+</p>
 
+<
+<div class="custom-text">
+YOUR MESSAGE HERE...
+Write anything you want about her 💖
+Your feelings, memories, promises, anything 🥹
 </div>
 
-<script>
+<div class="buttons">
+<button class="yes" onclick="alert('YAYYYYY ❤️')">YES 💘</button>
+<button class="no" onclick="alert('Try again 😏')">NO 😜</button>
+</div>
 
-/* COUNTDOWN */
-let c=3;
-let count=document.getElementById("count");
-
-let interval=setInterval(()=>{
-  c--;
-  if(c==0){
-    clearInterval(interval);
-    showProposal();
-  } else {
-    count.innerText=c;
-  }
-},1000);
-
-
-/* PROPOSAL */
-function showProposal(){
-document.getElementById("box").innerHTML=`
-<h1 class="title">Will You Be Mine? ❤️</h1>
-
-<button class="yes" onclick="yesClick()">YES 💖</button>
-<button class="no" id="no">NO 😢</button>
-`;
-
-const noBtn=document.getElementById("no");
-noBtn.onmouseover=function(){
-  noBtn.style.left=Math.random()*200-100+"px";
-  noBtn.style.top=Math.random()*200-100+"px";
-};
-}
-
-
-/* YES CLICK — LOVE MODE */
-function yesClick(){
-
-document.body.style.background="#ffdde1";
-
-document.body.innerHTML=`
-<div style="
-display:flex;
-justify-content:center;
-align-items:center;
-height:100vh;
-flex-direction:column;
-font-size:45px;
-color:#ff2a5a;
-text-align:center;">
-
-❤️ YAYYYYY ❤️
-<br>
-You just made me the happiest person alive 💖
-
-</div>`;
-
-/* CONFETTI */
-for(let i=0;i<120;i++){
-  let conf=document.createElement("div");
-  conf.innerHTML="❤";
-  conf.style.position="absolute";
-  conf.style.left=Math.random()*100+"%";
-  conf.style.top="-20px";
-  conf.style.fontSize="20px";
-  conf.style.animation="fall 3s linear forwards";
-  document.body.appendChild(conf);
-}
-
-}
-
-/* CONFETTI ANIMATION */
-let style=document.createElement("style");
-style.innerHTML=`
-@keyframes fall{
-to{ transform:translateY(110vh); opacity:0; }
-}`;
-document.head.appendChild(style);
-
-</script>
+</div>
 
 </body>
 </html>
