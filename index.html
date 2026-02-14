@@ -1,1 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Happy Valentine's Day, My Love ❤️</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      overflow: hidden;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #fff;
+      text-align: center;
+      background-image: url('https://raw.githubusercontent.com/pratik0228/valentines-surprise-for-her/main/background.jpg.jpeg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+    }
 
+    /* Dark overlay so text is readable on your image */
+    body::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0, 0, 0, 0.45); /* adjust 0.45 for more/less darkness */
+      z-index: 1;
+    }
+
+    .content {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      padding: 20px;
+    }
+
+    h1 {
+      font-size: 4.5rem;
+      margin: 0 0 20px;
+      text-shadow: 3px 3px 10px rgba(0,0,0,0.8);
+      animation: fadeIn 2s ease-in-out;
+    }
+
+    p {
+      font-size: 1.8rem;
+      max-width: 800px;
+      margin: 0 0 40px;
+      text-shadow: 2px 2px 6px rgba(0,0,0,0.7);
+    }
+
+    .heart {
+      font-size: 5rem;
+      animation: beat 1.4s infinite;
+      margin: 20px 0;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes beat {
+      0%, 100% { transform: scale(1); }
+      50%      { transform: scale(1.15); }
+    }
+
+    @media (max-width: 768px) {
+      h1 { font-size: 3rem; }
+      p  { font-size: 1.4rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="content">
+    <div class="heart">❤️</div>
+    <h1>Happy Valentine's Day!</h1>
+    <p>To the most special person in my world...  
+      You make every day feel like magic.  
+      Thank you for being you. I love you more than words can say 💕</p>
+    
+    <!-- Feel free to change the message above! Add more lines, names, inside jokes, etc. -->
+  </div>
+</body>
+</html>
