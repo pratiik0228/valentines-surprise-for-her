@@ -1,179 +1,111 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Happy Valentine's Day, My Love ❤️</title>
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      height: 100vh;
-      overflow: hidden;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      color: #fff;
-      text-align: center;
-      <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Happy Valentine's Day, My Love ❤️</title>
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      height: 100vh;
-      overflow: hidden;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      color: #fff;
-      text-align: center;
-      background-image: url('https://raw.githubusercontent.com/pratik0228/valentines-surprise-for-her/main/background.jpg.jpeg');
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      background-attachment: fixed;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For My Valentine ❤️</title>
 
-    /* Dark overlay so text is readable on your image */
-    body::before {
-      content: "";
-      position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(0, 0, 0, 0.45); /* adjust 0.45 for more/less darkness */
-      z-index: 1;
-    }
+<style>
+body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: url("your-image.png") no-repeat center center/cover;
+  font-family: 'Georgia', serif;
+  overflow: hidden;
+}
 
-    .content {
-      position: relative;
-      z-index: 2;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      padding: 20px;
-    }
+/* Dark overlay for readability */
+.overlay {
+  background: rgba(255,255,255,0.85);
+  padding: 40px;
+  border-radius: 20px;
+  text-align: center;
+  max-width: 650px;
+  animation: fadeIn 2s ease;
+}
 
-    h1 {
-      font-size: 4.5rem;
-      margin: 0 0 20px;
-      text-shadow: 3px 3px 10px rgba(0,0,0,0.8);
-      animation: fadeIn 2s ease-in-out;
-    }
+h1 {
+  color: red;
+  font-size: 38px;
+  margin-bottom: 20px;
+}
 
-    p {
-      font-size: 1.8rem;
-      max-width: 800px;
-      margin: 0 0 40px;
-      text-shadow: 2px 2px 6px rgba(0,0,0,0.7);
-    }
+#text {
+  color: red;
+  font-size: 20px;
+  line-height: 1.6;
+  min-height: 180px;
+}
 
-    .heart {
-      font-size: 5rem;
-      animation: beat 1.4s infinite;
-      margin: 20px 0;
-    }
+/* Floating hearts */
+.heart {
+  position: absolute;
+  color: red;
+  font-size: 20px;
+  animation: float 6s linear infinite;
+}
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(30px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
+@keyframes float {
+  0% { transform: translateY(0); opacity: 1; }
+  100% { transform: translateY(-800px); opacity: 0; }
+}
 
-    @keyframes beat {
-      0%, 100% { transform: scale(1); }
-      50%      { transform: scale(1.15); }
-    }
-
-    @media (max-width: 768px) {
-      h1 { font-size: 3rem; }
-      p  { font-size: 1.4rem; }
-    }
-  </style>
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+</style>
 </head>
+
 <body>
-  <div class="content">
-    <div class="heart">❤️</div>
-    <h1>Happy Valentine's Day!</h1>
-    <p>To the most special person in my world...  
-      You make every day feel like magic.  
-      Thank you for being you. I love you more than words can say 💕</p>
-    
-    <!-- Feel free to change the message above! Add more lines, names, inside jokes, etc. -->
-  </div>
-</body>
-</html>
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      background-attachment: fixed;
-    }
 
-    /* Dark overlay so text is readable on your image */
-    body::before {
-      content: "";
-      position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(0, 0, 0, 0.45); /* adjust 0.45 for more/less darkness */
-      z-index: 1;
-    }
+<div class="overlay">
+  <h1>Heyy ❤️</h1>
+  <div id="text"></div>
+</div>
 
-    .content {
-      position: relative;
-      z-index: 2;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      padding: 20px;
-    }
+<script>
+const message = `Heyy sexy lady,
 
-    h1 {
-      font-size: 4.5rem;
-      margin: 0 0 20px;
-      text-shadow: 3px 3px 10px rgba(0,0,0,0.8);
-      animation: fadeIn 2s ease-in-out;
-    }
+I was honestly amazed after seeing your picture yesterday… couldn’t stop thinking about you ❤️
 
-    p {
-      font-size: 1.8rem;
-      max-width: 800px;
-      margin: 0 0 40px;
-      text-shadow: 2px 2px 6px rgba(0,0,0,0.7);
-    }
+The sad part is we can’t celebrate this day together.
+Otherwise we would be hanging out, roaming here and there,
+maybe going on a cute dinner date and just enjoying every single moment.
 
-    .heart {
-      font-size: 5rem;
-      animation: beat 1.4s infinite;
-      margin: 20px 0;
-    }
+I would tease you a little, make you laugh,
+and hold your hand like I never want to let go.
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(30px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
+But someday… we will celebrate it together,
+and it will be even more special 💫
 
-    @keyframes beat {
-      0%, 100% { transform: scale(1); }
-      50%      { transform: scale(1.15); }
-    }
+WILL YOU BE MY VALENTINE DIMPII? ❤️`;
 
-    @media (max-width: 768px) {
-      h1 { font-size: 3rem; }
-      p  { font-size: 1.4rem; }
-    }
-  </style>
-</head>
-<body>
-  <div class="content">
-    <div class="heart">❤️</div>
-    <h1>Happy Valentine's Day!</h1>
-    <p>To the most special person in my world...  
-      You make every day feel like magic.  
-      Thank you for being you. I love you more than words can say 💕</p>
-    
-    <!-- Feel free to change the message above! Add more lines, names, inside jokes, etc. -->
-  </div>
+let i = 0;
+function typeWriter() {
+  if (i < message.length) {
+    document.getElementById("text").innerHTML += message.charAt(i);
+    i++;
+    setTimeout(typeWriter, 35);
+  }
+}
+typeWriter();
+
+/* Floating hearts generator */
+setInterval(() => {
+  const heart = document.createElement("div");
+  heart.className = "heart";
+  heart.innerHTML = "❤";
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.fontSize = Math.random() * 20 + 15 + "px";
+  document.body.appendChild(heart);
+
+  setTimeout(() => heart.remove(), 6000);
+}, 400);
+</script>
+
 </body>
 </html>
