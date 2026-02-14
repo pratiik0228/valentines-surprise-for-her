@@ -10,39 +10,69 @@
 <style>
 body{
   margin:0;
-  height:100vh;
   overflow:hidden;
   font-family:'Poppins',sans-serif;
-  background:url("bg.png") center/cover no-repeat;
-  display:flex;
-  justify-content:center;
-  align-items:center;
+  background:black;
+  color:white;
 }
 
-/* Romantic glass card */
+/* Stars background */
+.stars{
+  position:fixed;
+  width:100%;
+  height:100%;
+  background:url("https://i.imgur.com/YKY28eT.png");
+  animation: move 200s linear infinite;
+}
+
+@keyframes move{
+  from{background-position:0 0}
+  to{background-position:-10000px 5000px}
+}
+
+/* Envelope */
+.envelope{
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  font-size:120px;
+  cursor:pointer;
+  animation: glow 2s infinite alternate;
+}
+
+@keyframes glow{
+  from{text-shadow:0 0 10px pink}
+  to{text-shadow:0 0 40px red}
+}
+
+/* Letter card */
 .card{
+  display:none;
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
   backdrop-filter: blur(18px);
-  background: rgba(255,255,255,0.15);
+  background: rgba(255,255,255,0.1);
   border-radius: 30px;
   padding: 50px;
   width: 85%;
   max-width: 700px;
   text-align:center;
-  box-shadow: 0 0 60px rgba(255,0,0,0.4);
-  animation: fade 2s ease;
+  box-shadow: 0 0 60px rgba(255,0,0,0.6);
 }
 
 h1{
   font-family:'Great Vibes',cursive;
-  font-size:60px;
+  font-size:65px;
   color:#ff1a1a;
-  text-shadow:0 0 20px red;
 }
 
 #text{
-  color:#ff1a1a;
+  color:#ff4d4d;
   font-size:20px;
-  min-height:180px;
+  min-height:200px;
   line-height:1.7;
 }
 
@@ -54,23 +84,10 @@ button{
   border-radius:30px;
   font-size:18px;
   cursor:pointer;
-  transition:0.3s;
 }
 
-.yes{
-  background:#ff1a1a;
-  color:white;
-  box-shadow:0 0 20px red;
-}
-
-.no{
-  background:white;
-  color:#ff1a1a;
-}
-
-button:hover{
-  transform:scale(1.1);
-}
+.yes{background:#ff1a1a;color:white;}
+.no{background:white;color:#ff1a1a;}
 
 /* Floating hearts */
 .heart{
@@ -83,34 +100,21 @@ button:hover{
   0%{transform:translateY(0);opacity:1}
   100%{transform:translateY(-1000px);opacity:0}
 }
-
-/* Falling petals */
-.petal{
-  position:absolute;
-  color:pink;
-  animation: fall 10s linear infinite;
-}
-
-@keyframes fall{
-  0%{transform:translateY(-50px) rotate(0)}
-  100%{transform:translateY(110vh) rotate(360deg)}
-}
-
-@keyframes fade{
-  from{opacity:0; transform:scale(0.7)}
-  to{opacity:1; transform:scale(1)}
-}
 </style>
 </head>
 
 <body>
 
+<div class="stars"></div>
+
 <!-- MUSIC -->
-<audio autoplay loop>
+<audio id="music" loop>
   <source src="music.mp3" type="audio/mp3">
 </audio>
 
-<div class="card">
+<div class="envelope" onclick="openLetter()">💌</div>
+
+<div class="card" id="card">
   <h1>Heyy ❤️</h1>
   <div id="text"></div>
   <div id="buttons" style="display:none">
@@ -120,6 +124,14 @@ button:hover{
 </div>
 
 <script>
+function openLetter(){
+  document.querySelector(".envelope").style.display="none";
+  document.getElementById("card").style.display="block";
+  document.getElementById("music").play();
+  type();
+}
+
+/* Typewriter */
 const msg = `I was honestly stunned after seeing your picture yesterday…
 couldn't stop thinking about you ❤️
 
@@ -141,14 +153,13 @@ function type(){
    document.getElementById("buttons").style.display="block";
  }
 }
-type();
 
 /* YES explosion */
 function yes(){
-  document.body.innerHTML="<h1 style='color:red;font-size:70px;text-align:center;'>SHE SAID YES ❤️‍🔥</h1>";
+ document.body.innerHTML="<h1 style='color:red;font-size:80px;text-align:center;margin-top:40vh;'>SHE SAID YES ❤️‍🔥</h1>";
 }
 
-/* NO button runs away */
+/* NO runs away */
 const noBtn=document.getElementById("noBtn");
 noBtn.addEventListener("mouseover",()=>{
   noBtn.style.position="absolute";
@@ -166,16 +177,6 @@ setInterval(()=>{
  document.body.appendChild(h);
  setTimeout(()=>h.remove(),8000);
 },300);
-
-/* Falling petals */
-setInterval(()=>{
- let p=document.createElement("div");
- p.className="petal";
- p.innerHTML="🌸";
- p.style.left=Math.random()*100+"vw";
- document.body.appendChild(p);
- setTimeout(()=>p.remove(),10000);
-},500);
 </script>
 
 </body>
